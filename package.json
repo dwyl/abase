@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dwyl/ppl.git"
+    "url": "git+https://github.com/dwyl/abase.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dwyl/ppl/issues"
+    "url": "https://github.com/dwyl/abase/issues"
   },
-  "homepage": "https://github.com/dwyl/ppl#readme"
+  "homepage": "https://github.com/dwyl/abase#readme"
 }
