@@ -1,0 +1,57 @@
+{
+   "table":"user",
+   "fields":{
+      "email":{
+         "type":"string",
+         "email":true,
+         "required":true
+      },
+      "username":{
+         "type":"string",
+         "min":3,
+         "max":20,
+         "required":true
+      },
+      "password":{
+         "type":"string",
+         "require":true
+      },
+      "dob":{
+         "type":"date"
+      },
+      "gender": {
+          "type": "string",
+          "values": ["M", "F", "O", "NA"]
+      }
+   },
+   "pages":{
+      "register":{
+         "path":"/signup",
+         "edit":true,
+         "contents":[
+            "email",
+            "username",
+            {
+               "field":"password",
+               "options":{
+                  "confirmation":true
+               }
+            }
+         ]
+      },
+      "login":{
+         "edit":true,
+         "contents":[
+            "email",
+            "password"
+         ]
+      },
+      "deets":{
+         "contents":[
+            "username",
+            "name",
+            "gender"
+         ]
+      }
+   }
+}
