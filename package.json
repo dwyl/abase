@@ -4,7 +4,8 @@
   "description": "A simple service to help people manage their personal data in your app.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:example": "node ./example/start.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/dwyl/abase/issues"
   },
-  "homepage": "https://github.com/dwyl/abase#readme"
+  "homepage": "https://github.com/dwyl/abase#readme",
+  "devDependencies": {
+    "hapi": "^15.0.3",
+    "hoek": "^4.1.0"
+  }
 }
