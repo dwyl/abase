@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "A simple service to help people manage their personal data in your app.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start:example": "node ./example/start.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dwyl/abase.git"
@@ -19,7 +15,18 @@
   },
   "homepage": "https://github.com/dwyl/abase#readme",
   "devDependencies": {
-    "hapi": "^15.0.3",
-    "hoek": "^4.1.0"
-  }
+    "istanbul": "^0.4.5",
+    "pre-commit": "^1.1.3",
+    "tape": "^4.6.0"
+  },
+  "scripts": {
+    "example": "node ./example/start.js",
+    "test": "tape ./test/*.js",
+    "coverage": "istanbul cover tape ./test/*.js && istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
+    "eslint": "eslint ."
+  },
+  "pre-commit": [
+    "eslint",
+    "test"
+  ]
 }
