@@ -29,8 +29,14 @@
          "path":"/signup",
          "edit":true,
          "contents":[
-            "email",
-            "username",
+            {
+              "field": "email",
+              "options": {}
+            },
+            {
+              "field": "username",
+              "options": {}
+            },
             {
                "field":"password",
                "options":{
@@ -42,8 +48,14 @@
       "login":{
          "edit":true,
          "contents":[
-            "email",
-            "password"
+           {
+             "field": "email",
+             "options": {}
+           },
+           {
+              "field":"password",
+              "options":{}
+           }
          ]
       },
       "deets":{
