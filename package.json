@@ -21,9 +21,9 @@
     "tape": "^4.6.0"
   },
   "scripts": {
-    "test": "node_modules/.bin/tape ./test/*.js",
+    "test": "node_modules/.bin/tape ./src/test/*.js",
     "eslint": "node_modules/.bin/eslint .",
-    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/tape ./test/*.js"
+    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/tape ./src/test/*.js"
   },
   "pre-commit": [
     "eslint",
