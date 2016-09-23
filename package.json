@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/dwyl/abase/issues"
   },
-  "homepage": "https://github.com/dwyl/abase#readme"
+  "homepage": "https://github.com/dwyl/abase#readme",
+  "devDependencies": {
+    "tape": "^4.6.0"
+  }
 }
