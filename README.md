@@ -20,7 +20,6 @@ this is a good option because they don't have to _think_ about where
 the data is stored, however we prefer to know _exactly_ where data is
 stored, how it's encrypted and who can access it.˜</small>
 
-
 ## _What_?
 
 ### Distinguishing/Differntiating Features
@@ -29,7 +28,6 @@ stored, how it's encrypted and who can access it.˜</small>
 + Plain English Access controls
 + Mobile First/Optimised (Responsive) UI (_view/edit data on any device_)
 + Server-side Rendered (_for speed_) with client-side (_progressive_) enhancement (_for user experience_)
-
 
 ## _Who_?
 
@@ -51,10 +49,6 @@ Anyone building a web app (where the experience is personalised) and wants to _k
   + view/update any other personal details once logged in
 + REST API Endpoint for all actions (_when content-type is **not** set to `text/html`_)
 + HTML Responses for all endpoints that request content-type
-
-
-
-
 <br /><br />
 
 # _tl;dr_

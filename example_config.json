@@ -59,11 +59,7 @@
          ]
       },
       "deets":{
-         "contents":[
-            "username",
-            "name",
-            "gender"
-         ]
+         "contents":[]
       }
    }
 }
