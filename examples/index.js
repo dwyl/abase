@@ -2,14 +2,15 @@
 
 require('env2')('config.env');
 var Hapi = require('hapi');
-var plugin = require('../lib/index.js');
+var Abase = require('../lib/index.js');
+var HapiPg = require('hapi-postgres-connection');
 var server = new Hapi.Server();
 
 server.connection({
   port: process.env.PORT || 8888,
 });
 
-server.register(plugin, function (err) {
+server.register([HapiPg, Abase], function (err) {
   if (err) {
     throw err;
   }

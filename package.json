@@ -33,4 +33,6 @@
   ],
   "dependencies": {
     "env2": "^2.1.1",
+    "hapi-postgres-connection": "^6.1.0"
+  }
 }
