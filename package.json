@@ -21,12 +21,13 @@
     "tape": "^4.6.0"
   },
   "scripts": {
-    "test": "node_modules/.bin/tape ./src/test/*.js",
-    "eslint": "node_modules/.bin/eslint .",
-    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/tape ./src/test/*.js"
+    "test": "node_modules/.bin/tape ./src/test/*.test.js",
+    "lint": "node_modules/.bin/eslint .",
+    "lint:fix": "node_modules/.bin/eslint . --fix",
+    "coverage": "node_modules/.bin/istanbul cover npm run test"
   },
   "pre-commit": [
-    "eslint",
+    "lint",
     "test"
   ]
 }
