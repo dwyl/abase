@@ -30,5 +30,7 @@
   "pre-commit": [
     "lint",
     "test"
-  ]
+  ],
+  "dependencies": {
+    "env2": "^2.1.1",
 }

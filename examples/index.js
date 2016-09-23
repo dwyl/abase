@@ -1,5 +1,6 @@
 'use strict';
 
+require('env2')('config.env');
 var Hapi = require('hapi');
 var plugin = require('../lib/index.js');
 var server = new Hapi.Server();
