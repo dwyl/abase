@@ -108,6 +108,17 @@ There are at the moment 3 config files:
 
 We are currently using Handlebars to render the different types of field. For that each type is define as a handlebars partial (see render/partials)
 
+At the moment you have to add manually the fields you want displayed on the page manually into the example_config_2.json. For example if you have just add a new field (ex: 'username' with the type 'string') in your user structure via the /config/user endpoints and want to display the new field in the /user/edit page you will need to add
+```
+{
+  field: 'username',
+  attributes: {
+    "name": "username",
+    "label": "Username:"
+  }
+}
+```
+
 
 
 
