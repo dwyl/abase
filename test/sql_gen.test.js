@@ -1,17 +1,48 @@
-// 'use strict';
-//
-// var tape = require('tape');
-// var sqlGen = require('../lib/sql.gen.js');
-//
-// tape('::init should generate empty string on invalid input', function () {});
-//
-// tape('::init should generate SQL to create a table if none exists', function (t) {
-//   var tableName = 'User';
-//   var query = sqlGen.init(tableName);
-//   t.equal(query[0], 'CREATE TABLE IF NOT EXISTS $1');
-//   t.equal(query[1], tableName);
-//   t.end();
-// });
-//
+'use strict';
+
+var tape = require('tape');
+var sqlGen = require('../lib/sql_gen.js');
+
+var schema = {
+  table_name: 'user_data',
+  fields: {
+    email: {
+      type: 'string',
+      email: true
+    },
+    username: {
+      type: 'string',
+      min: 3,
+      max: 20
+    },
+    dob: {
+      type: 'date'
+    }
+  }
+};
+
+tape('::init should throw on empty or invalid input', function (t) {
+  t.throws(function () {
+    sqlGen.init();
+  });
+  t.end();
+});
+
+tape('::init should generate SQL to create a table if none exists', function (t) {
+  var query = sqlGen.init(schema);
+
+  t.equal(
+    query,
+    'CREATE TABLE IF NOT EXISTS "user_data" ('
+    + 'email VARCHAR(80), '
+    + 'username VARCHAR(20), '
+    + 'dob DATE'
+    + ')',
+    'Create table query generation from config object'
+  );
+  t.end();
+});
+
 // tape('::update should generate empty string on invalid input', function () {});
+
 // tape('::update should generate SQL to update a column in a table', function () {});
