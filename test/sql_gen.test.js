@@ -1,25 +1,9 @@
 'use strict';
 
 var tape = require('tape');
-var sqlGen = require('../lib/sql_gen.js');
 
-var schema = {
-  table_name: 'user_data',
-  fields: {
-    email: {
-      type: 'string',
-      email: true
-    },
-    username: {
-      type: 'string',
-      min: 3,
-      max: 20
-    },
-    dob: {
-      type: 'date'
-    }
-  }
-};
+var sqlGen = require('../lib/sql_gen.js');
+var schema = require('./example_schema.js');
 
 tape('::init should throw on empty or invalid input', function (t) {
   t.throws(function () {
