@@ -1,5 +1,9 @@
 # `abase` <small>("_a [Base](https://en.wiktionary.org/wiki/base#Noun)_")</small>
 
+## First Iteration Documentation
+
+See the wiki: https://github.com/dwyl/abase/wiki/Documentation
+
 A _Base_ for building reliable web apps quickly.
 
 ## _Why_?
