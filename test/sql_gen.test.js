@@ -51,6 +51,17 @@ tape('::select should generate SQL to select columns from a table', function (t)
   t.end();
 });
 
+tape('::select should generate SQL to select columns from a table w/ where clause', function (t) {
+  var query = sqlGen.select(schema.table_name, {
+    select: ['email', 'dob'],
+    where: { foo: 'bar' }
+  });
+
+  t.equal(query[0], 'SELECT email, dob FROM "user_data" WHERE foo=$1', 'Generate parameterised query');
+  t.deepEqual(query[1], ['bar'], 'Generate values for parameterised query');
+  t.end();
+});
+
 tape('::insert should generate SQL to insert a column into a table', function (t) {
   var query = sqlGen.insert(schema.table_name, {fields: { email: 'me@poop.com' }});
 
