@@ -6,50 +6,71 @@ var mapper = require('../lib/create_table_map.js');
 
 var mapObj = mapper.mapObj;
 
-test('Create Table Mapper Obj', function (t) {
+test('Boolean type', function (t) {
   t.equal(
-    mapObj['bool'](),
+    mapObj['boolean']({}),
     'BOOLEAN',
-    'bool type'
+    'boolean type: default'
   );
+  t.end();
+});
+
+test('Date type', function (t) {
   t.equal(
-    mapObj['date'](),
+    mapObj['date']({}),
     'DATE',
-    'date type'
+    'date type: default'
   );
   t.equal(
-    mapObj['float'](),
-    'DOUBLE PRECISION',
-    'float type'
-  );
-  t.equal(
-    mapObj['timestamp'](),
+    mapObj['date']({ timestamp: true }),
     'TIMESTAMP',
-    'timestamp type'
+    'date type: timestamp'
+  );
+  t.end();
+});
+
+test('Number type', function (t) {
+  t.equal(
+    mapObj['number']({}),
+    'DOUBLE PRECISION',
+    'number type: default'
   );
   t.equal(
-    mapObj['int'](),
+    mapObj['number']({ integer: true }),
     'BIGINT',
-    'int type, note uses big int to allow for big numbers!!!!'
+    'number type: integer'
   );
+  t.end();
+});
+
+test('String type', function (t) {
   t.equal(
-    mapObj['text'](),
+    mapObj['string']({}),
     'VARCHAR(80)',
-    'text type: default'
+    'string type: default'
   );
   t.equal(
-    mapObj['text']({ length: 12 }),
+    mapObj['string']({ max: 12 }),
     'VARCHAR(12)',
-    'text type: specifies length'
+    'string type: specifies length'
   );
   t.end();
 });
 
 test('Create Table Mapper Function', function (t) {
   t.equal(
-    mapper('field', 'text', { length: 140 }),
+    mapper('field', 'string', { max: 140 }),
     'field VARCHAR(140)',
     'name added to sql query and options passed through'
+  );
+  t.end();
+});
+
+test('Create Table Mapper Function w/ no options', function (t) {
+  t.equal(
+    mapper('field', 'string'),
+    'field VARCHAR(80)',
+    'name added to sql query and default options used'
   );
   t.end();
 });
