@@ -73,3 +73,41 @@ a well-managed PostgreSQL cluster copes very well.
 > If you're still Curious or Worried about scaling PostgreSQL?
 see: https://www.citusdata.com
 > Want to model the network of people as a graph? https://github.com/cayleygraph/cayley
+
+# First version
+
+## Endpoints
+
+When the abase plugin is added to an Hapi application it will automatically create 6 endpoints:
+
+- /signup:
+  - GET: display a simple signup form
+  - POST: create a new user in the database (email, password)
+- /login, GET: display the login form
+  - GET: display a simple form for login (email, password)
+- /user/list:
+  - GET: display all the users
+- /users/detail/{idUser}:
+  - GET: display the information of a user
+- /user/edit/{idUser}:
+  - GET: display the from where the information of a user can be edited
+  - POST: save the new information of the user in the database
+- /config/user:
+  - GET: display form where an "admin" of the application can add field to the user structure
+  - POST: add new field into the structure user (ex: "name" field with the type string)
+
+## Configuration
+
+There are at the moment 3 config files:
+
+- example_config_2.json: define the pages(endpoints) and which fields should be displayed on these pages
+
+- fields.json: define the structure of the user object. The endpoint /config/user is managing this config files
+
+- types.json: define the type of the fields which can be used in the user structure, ex: string, boolean, password... These types are mapped to an html representation, ex string -> an input with the type text; password -> an input with the type password; boolean -> a checkbox This allow the plugin to know which html to render depeding of the structure of the user and it allow us to have a dynamic structure (add/remove new field)
+
+We are currently using Handlebars to render the different types of field. For that each type is define as a handlebars partial (see render/partials)
+
+
+
+

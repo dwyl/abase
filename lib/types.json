@@ -3,5 +3,6 @@
   "password",
   "email",
   "boolean",
-  "integer"
+  "integer",
+  "hidden"
 ]

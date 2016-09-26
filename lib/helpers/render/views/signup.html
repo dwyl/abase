@@ -1,7 +1,7 @@
 <form path="{{path}}" method="{{method}}">
   <h1>Signup</h1>
-  {{#each fields}}
-    {{> (lookup . 'field') (lookup . 'attributes') }}
+  {{#each fieldsToDisplay}}
+    {{>  (lookup (lookup ../userFields this.field) 'type') (lookup . 'attributes') }}
   {{/each}}
   <button type="submit">Signup</button>
 </form>

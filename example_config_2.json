@@ -127,6 +127,13 @@
             "name": "age",
             "label": "Age: "
           }
+        },
+        {
+          "field": "streename",
+          "attributes": {
+            "name": "streename",
+            "label": "Stree name: "
+          }
         }
       ]
     }

@@ -1,7 +1,7 @@
 <h1>User</h1>
 <form action="/user/edit/{{userDetails.id}}" method="post">
-  {{#each fields}}
-   {{> (lookup . 'field') (lookup . 'attributes') }}
+  {{#each fieldsToDisplay}}
+    {{>  (lookup (lookup ../userFields this.field) 'type') (lookup . 'attributes') }}
   {{/each}}
   <button type="submit">Save</button>
 </form>
