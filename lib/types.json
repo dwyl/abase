@@ -1,0 +1,7 @@
+[
+  "string",
+  "password",
+  "email",
+  "boolean",
+  "integer"
+]

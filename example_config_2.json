@@ -1,0 +1,134 @@
+{
+  "table": "user",
+  "pages": {
+    "register": {
+      "path": "/signup",
+      "type": "signup",
+      "method": [
+        "GET",
+        "POST"
+      ],
+      "fields": [
+        {
+          "field": "email",
+          "type": "id",
+          "attributes": {
+            "name": "email",
+            "label": "Email: "
+          }
+        },
+        {
+          "field": "password",
+          "type": "password",
+          "attributes": {
+            "name": "password",
+            "label": "Password: "
+          }
+        }
+      ]
+    },
+    "login": {
+      "path": "/login",
+      "type": "login",
+      "method": [
+        "GET",
+        "POST"
+      ],
+      "fields": [
+        {
+          "field": "email",
+          "type": "id",
+          "attributes": {
+            "name": "email",
+            "label": "Email: "
+          }
+        },
+        {
+          "field": "password",
+          "type": "password",
+          "attributes": {
+            "name": "password",
+            "label": "Password: "
+          }
+        }
+      ]
+    },
+    "user_list": {
+      "path": "/user/list",
+      "type": "user_list",
+      "method": [
+        "GET"
+      ],
+      "fields": [
+        {
+          "field": "id"
+        },
+        {
+          "field": "email"
+        },
+        {
+          "field": "age"
+        },
+        {
+          "field": "username"
+        }
+      ]
+    },
+    "user_detail": {
+      "path": "/user/detail/{id_user}",
+      "type": "user_detail",
+      "method": [
+        "GET"
+      ],
+      "fields": [
+        {
+          "field": "id"
+        },
+        {
+          "field": "email"
+        },
+        {
+          "field": "username"
+        }
+      ]
+    },
+    "user_edit": {
+      "path": "/user/edit/{id_user}",
+      "type": "user_edit",
+      "method": [
+        "GET",
+        "POST"
+      ],
+      "fields": [
+        {
+          "field": "id",
+          "attributes": {
+            "name": "id"
+          }
+        },
+        {
+          "field": "email",
+          "type": "id",
+          "attributes": {
+            "name": "email",
+            "label": "Email: "
+          }
+        },
+        {
+          "field": "username",
+          "attributes": {
+            "name": "username",
+            "label": "Username: "
+          }
+        },
+        {
+          "field": "age",
+          "attributes": {
+            "name": "age",
+            "label": "Age: "
+          }
+        }
+      ]
+    }
+  }
+}

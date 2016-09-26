@@ -34,5 +34,8 @@
     "test"
   ],
   "dependencies": {
+    "handlebars": "^4.0.5",
+    "riot": "^2.6.2",
+    "vision": "^4.1.0"
   }
 }

@@ -6,7 +6,7 @@ exports.init = function (port, next) {
 
   var server = new hapi.Server();
   server.connection({port: port});
-  server.register([home, {register: abase, options: require('../example_config.json')}], function (err) {
+  server.register([home, {register: abase, options: require('../example_config_2.json')}], function (err) {
     if (err) {
       return next(err);
     }

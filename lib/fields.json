@@ -1,0 +1,20 @@
+{
+  "id": {
+    "type": "integer"
+  },
+  "email": {
+    "type": "email"
+  },
+  "username": {
+    "type": "string"
+  },
+  "password": {
+    "type": "password"
+  },
+  "address": {
+    "type": "password"
+  },
+  "isCool": {
+    "type": "boolean"
+  }
+}

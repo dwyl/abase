@@ -1,0 +1,23 @@
+<h1>Existing fields</h1>
+
+<ul>
+  {{#each fields}}
+    <li>{{@key}}: {{type}}</li>
+  {{/each}}
+</ul>
+
+
+<h2>Add new field to the user schema</h2>
+
+<h3>Simple value type</h3>
+<form action="/config/user" method="post">
+  <input type="text" name="field_name" value="">
+  <label>Type:</label>
+  <select name="field_type">
+    {{#each types}}
+      <option>{{this}}</option>
+    {{/each}}
+  </select>
+  <button type="submit">Add field</button>
+</form>
+<h3>Multiple values type</h3>
