@@ -43,6 +43,15 @@ tape('::init should generate SQL to create a table if none exists', function (t)
   t.end();
 });
 
+tape('::select should generate SQL to select columns from a table', function (t) {
+  var query = sqlGen.select(schema.table_name, ['email', 'dob']);
+
+  t.equal(query[0], 'SELECT email, dob FROM "user_data"', 'Generate parameterised query');
+  t.deepEqual(query[1], [], 'Generate values for parameterised query');
+  t.end();
+});
+
+
 tape('::insert should generate SQL to insert a column into a table', function (t) {
   var query = sqlGen.insert(schema.table_name, { email: 'me@poop.com' });
 
