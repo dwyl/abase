@@ -1,0 +1,13 @@
+<h1>Users</h1>
+<ul>
+{{#each users as |value id|}}
+  <li>
+    <a href="/user/detail/{{value.id}}">id: {{value.id}}</a>
+    <ul>
+    {{#each value}}
+      <li></a>{{@key}}: {{this}}</li>
+    {{/each}}
+    </ul>
+  </li>
+{{/each}}
+</ul>

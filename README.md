@@ -20,7 +20,6 @@ this is a good option because they don't have to _think_ about where
 the data is stored, however we prefer to know _exactly_ where data is
 stored, how it's encrypted and who can access it.˜</small>
 
-
 ## _What_?
 
 ### Distinguishing/Differntiating Features
@@ -29,7 +28,6 @@ stored, how it's encrypted and who can access it.˜</small>
 + Plain English Access controls
 + Mobile First/Optimised (Responsive) UI (_view/edit data on any device_)
 + Server-side Rendered (_for speed_) with client-side (_progressive_) enhancement (_for user experience_)
-
 
 ## _Who_?
 
@@ -51,10 +49,6 @@ Anyone building a web app (where the experience is personalised) and wants to _k
   + view/update any other personal details once logged in
 + REST API Endpoint for all actions (_when content-type is **not** set to `text/html`_)
 + HTML Responses for all endpoints that request content-type
-
-
-
-
 <br /><br />
 
 # _tl;dr_
@@ -79,3 +73,52 @@ a well-managed PostgreSQL cluster copes very well.
 > If you're still Curious or Worried about scaling PostgreSQL?
 see: https://www.citusdata.com
 > Want to model the network of people as a graph? https://github.com/cayleygraph/cayley
+
+# First version
+
+## Endpoints
+
+When the abase plugin is added to an Hapi application it will automatically create 6 endpoints:
+
+- /signup:
+  - GET: display a simple signup form
+  - POST: create a new user in the database (email, password)
+- /login, GET: display the login form
+  - GET: display a simple form for login (email, password)
+- /user/list:
+  - GET: display all the users
+- /users/detail/{idUser}:
+  - GET: display the information of a user
+- /user/edit/{idUser}:
+  - GET: display the from where the information of a user can be edited
+  - POST: save the new information of the user in the database
+- /config/user:
+  - GET: display form where an "admin" of the application can add field to the user structure
+  - POST: add new field into the structure user (ex: "name" field with the type string)
+
+## Configuration
+
+There are at the moment 3 config files:
+
+- example_config_2.json: define the pages(endpoints) and which fields should be displayed on these pages
+
+- fields.json: define the structure of the user object. The endpoint /config/user is managing this config files
+
+- types.json: define the type of the fields which can be used in the user structure, ex: string, boolean, password... These types are mapped to an html representation, ex string -> an input with the type text; password -> an input with the type password; boolean -> a checkbox This allow the plugin to know which html to render depeding of the structure of the user and it allow us to have a dynamic structure (add/remove new field)
+
+We are currently using Handlebars to render the different types of field. For that each type is define as a handlebars partial (see render/partials)
+
+At the moment you have to add manually the fields you want displayed on the page manually into the example_config_2.json. For example if you have just add a new field (ex: 'username' with the type 'string') in your user structure via the /config/user endpoints and want to display the new field in the /user/edit page you will need to add
+```
+{
+  field: 'username',
+  attributes: {
+    "name": "username",
+    "label": "Username:"
+  }
+}
+```
+
+
+
+
