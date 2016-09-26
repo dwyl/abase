@@ -67,3 +67,11 @@ tape('::update should generate SQL to update a column in a table', function (t) 
   t.deepEqual(query[1], ['me@poop.com'], 'Generate values for parameterised query');
   t.end();
 });
+
+tape('::delete should generate SQL to delete a row from a table', function (t) {
+  var query = sqlGen.delete(schema.table_name, { username: 'bob' });
+
+  t.equal(query[0], 'DELETE FROM "user_data" WHERE username=$1', 'Generate parameterised query');
+  t.deepEqual(query[1], ['bob'], 'Generate values for parameterised query');
+  t.end();
+});
