@@ -43,10 +43,8 @@ tape('::init should generate SQL to create a table if none exists', function (t)
   t.end();
 });
 
-// tape('::update should generate empty string on invalid input', function () {});
-
 tape('::insert should generate SQL to insert a column into a table', function (t) {
-  var query = sqlGen.insert(schema, {email: 'me@poop.com'});
+  var query = sqlGen.insert(schema, { email: 'me@poop.com' });
 
   t.equal(query[0], 'INSERT INTO "user_data" (email) VALUES ($1)', 'Generate parameterised query');
   t.deepEqual(query[1], ['me@poop.com'], 'Generate values for parameterised query');
@@ -54,7 +52,7 @@ tape('::insert should generate SQL to insert a column into a table', function (t
 });
 
 tape('::update should generate SQL to update a column in a table', function (t) {
-  var query = sqlGen.update(schema, {email: 'me@poop.com'});
+  var query = sqlGen.update(schema, { email: 'me@poop.com' });
 
   t.equal(query[0], 'UPDATE "user_data" SET email=$1', 'Generate parameterised query');
   t.deepEqual(query[1], ['me@poop.com'], 'Generate values for parameterised query');
