@@ -27,6 +27,13 @@ test('config validator', function (t) {
     }).error,
     'error if field name doesn\'t pass db name regex'
   );
+  t.notOk(
+    validator({
+      table_name: 'test',
+      fields: {'email': {type: 'string', unknown: 'allowed'}}
+    }).error,
+    'no error when extra options unknown'
+  );
 
   t.end();
 });
