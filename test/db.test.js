@@ -6,7 +6,7 @@ var schema = require('./example_schema.js');
 
 var testInsert = {
   email: 'test@gmail.com',
-  dob: '9/28/2001',
+  dob: '2001-09-27',
   username: 'test'
 };
 
@@ -39,22 +39,32 @@ test('db.init', function (t) {
 
 
 test('db.insert & default select w custom where', function (t) {
-  t.plan(1);
-
   db.insert(client, schema, { fields: testInsert })
     .then(function () {
-      return db.select(client, schema, { where: { dob: '2001-09-28'}});
+      return db.select(client, schema, { where: { dob: '2001-09-27'}});
     })
     .then(function (res) {
-      res.rows[0].dob = res.rows[0].dob.toLocaleDateString();
-
-      t.deepEqual(
-        res.rows[0],
-        testInsert,
-        'get same object back'
+      t.equal(
+        res.rows[0].email,
+        testInsert.email,
+        'email correct'
       );
+      t.equal(
+        res.rows[0].username,
+        testInsert.username,
+        'username correct'
+      );
+      t.equal(
+        res.rows[0].dob.toLocaleDateString('GMT'),
+        new Date(testInsert.dob).toLocaleDateString('GMT'),
+        'get same date back, though now a date object'
+      );
+      t.end();
     })
-    .catch(t.fail)
+    .catch(function (err) {
+      t.fail(err);
+      t.end();
+    })
   ;
 });
 
