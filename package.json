@@ -1,6 +1,6 @@
 {
   "name": "abase2",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A simple service to help people manage their personal data in your app.",
   "main": "lib/index.js",
   "repository": {
