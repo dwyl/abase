@@ -12,7 +12,7 @@ var testInsert = {
 
 test('init test client', function (t) {
   client.connect(function () {
-    client.query('DROP TABLE ' + schema.table_name, t.end);
+    client.query('DROP TABLE IF EXISTS ' + schema.table_name, t.end);
   });
 });
 
