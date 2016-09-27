@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dwyl/abase.svg?branch=master)](https://travis-ci.org/dwyl/abase)
+
 # `abase` <small>("_a [Base](https://en.wiktionary.org/wiki/base#Noun)_")</small>
 
 ## First Iteration Documentation
