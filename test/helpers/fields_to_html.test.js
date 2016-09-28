@@ -1,3 +1,5 @@
+'use strict';
+
 var tape = require('tape');
 var fieldToHtml = require('../../lib/helpers/html_transform/field_to_html.js');
 
@@ -10,7 +12,8 @@ tape('returns a html input tag', function (t) {
     required: true
   };
   var actual = fieldToHtml(name, input);
-  var expected = '<label>email: </label><input type="string" value="" \>';
+  var expected = '<label>email: </label><input type="string" value="" >';
+
   t.equal(actual, expected);
   t.end();
 });
@@ -30,6 +33,7 @@ tape('returns a html select tag', function (t) {
     + '<option>O</option>'
     + '<option>NA</option>'
     + '</select>';
+
   t.equal(actual, expected);
   t.end();
 });
@@ -38,7 +42,8 @@ tape('returns a input type string with date input', function (t) {
   var name = 'dob';
   var input = { type: 'date' };
   var actual = fieldToHtml(name, input);
-  var expected = '<label>dob: </label><input type="date" \>';
+  var expected = '<label>dob: </label><input type="date" >';
+
   t.equal(actual, expected);
   t.end();
 });
