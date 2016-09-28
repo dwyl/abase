@@ -1,66 +1,95 @@
-var tape = require('tape');
-var Hapi = require('hapi');
-var path = require('path');
+'use strict';
+
 var fs = require('fs');
-
-fs.writeFileSync(path.join(__dirname, 'schema.json'), JSON.stringify({}), 'utf8');
-
+var Hapi = require('hapi');
+var tape = require('tape');
+var path = require('path');
 var abase = require('../lib/index.js');
+var hooks = require('./helpers/hooks.js');
+var PATH_SCHEMA = path.join(__dirname, 'fixtures', 'schema.json');
+var PATH_WRONGSCHEMA = path.join(__dirname, 'fixtures', 'wrong_schema.json');
+var PATH_RIGHTSCHEMA = path.join(__dirname, 'fixtures', 'right_schema.json');
+var server;
+
+// Spoofs a JSON file, where our naming convention is snake-case
+// But in JS our convention is camel case, so need to disable linting here
+function getOpts (PATH) {
+  return { user_schema_path: PATH }; // eslint-disable-line
+}
+
+// Add test hooks to tape
+tape = hooks.beforeEach(tape, function (t) {
+  server = new Hapi.Server();
+  server.connection({ port: 0 });
+  t.end();
+});
+
+tape = hooks.afterEach(tape, function (t) {
+  // reset the schema for next tests
+  fs.writeFileSync(
+    PATH_SCHEMA,
+    JSON.stringify({}),
+    'utf8'
+  );
+  server.stop(t.end);
+});
+
 
 tape('check wrong path throws error', function (t) {
-  var server = new Hapi.Server();
-  server.connection({ port: 0 });
+  var opts = { wrong: PATH_SCHEMA };
 
-  var opts = {
-    wrong_path: ''
-  };
-
-  server.register({ register: abase, options: opts }, function (err) {
+  server.register({
+    register: abase, options: opts
+  }, function (err) {
     t.ok(err, 'Error thrown');
-    server.stop(function () {
-      t.end();
-    });
+    t.end();
   });
 });
 
-tape('check no error is thrown if we have the user_schema_path key', function (t) {
-  var server = new Hapi.Server();
-  server.connection({ port: 0});
+tape('Attempt to load a wrong content config schema', function (t) {
+  var opts = getOpts(PATH_WRONGSCHEMA);
 
-  var opts = {
-    user_schema_path: path.join(__dirname, 'schema.json')
-  };
+  server.register({
+    register: abase, options: opts
+  }, function (err) {
+    t.ok(err, 'Error thrown');
+    t.end();
+  });
+});
 
-  var schema = require('./schema.json');
+tape('Load abase plugin properly', function (t) {
+  var opts = getOpts(PATH_RIGHTSCHEMA);
 
-  t.deepEqual(schema, {}, 'schema is empty');
+  server.register({
+    register: abase, options: opts
+  }, function (err) {
+    t.ok(!err, 'Error thrown');
+    t.end();
+  });
+});
 
-  server.register({ register: abase, options: opts }, function (err) {
+tape('Load properly abase plugin and add default values', function (t) {
+  var opts = getOpts(PATH_SCHEMA);
+  var schemaBefore, schemaAfter, expected;
+
+  schemaBefore = JSON.parse(fs.readFileSync(opts.user_schema_path, 'utf8'));
+  t.deepEqual(schemaBefore, {}, 'The schema is empty before abase loading');
+
+  server.register({
+    register: abase, options: opts
+  }, function (err) {
     t.ok(!err, 'No error thrown');
 
-    var schema = JSON.parse(fs.readFileSync(path.join(__dirname, 'schema.json')));
-
-    t.ok(schema.email, 'Schema has email property');
-    server.stop(function () {
-      t.end();
-    });
+    schemaAfter = JSON.parse(fs.readFileSync(opts.user_schema_path, 'utf8'));
+    expected = {
+      email: { type: 'email' },
+      password: { type: 'password' }
+    };
+    t.deepEqual(
+      schemaAfter,
+      expected,
+      'The schema contains the default values after abase loaded'
+    );
+    t.end();
   });
 });
-
-tape('check schema is read and no keys are updated', function (t) {
-  var server = new Hapi.Server();
-  server.connection({ port: 0});
-
-  var opts = {
-    user_schema_path: path.join(__dirname, 'schema.json')
-  };
-
-  server.register({ register: abase, options: opts }, function (err) {
-    t.ok(!err, 'No error thrown');
-
-    server.stop(function () {
-      t.end();
-    });
-  });
-});
-
