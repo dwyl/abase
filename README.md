@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/dwyl/abase.svg?branch=master)](https://travis-ci.org/dwyl/abase)
+[![codecov](https://codecov.io/gh/dwyl/abase/branch/master/graph/badge.svg)](https://codecov.io/gh/dwyl/abase)
 
 # `abase` <small>("_a [Base](https://en.wiktionary.org/wiki/base#Noun)_")</small>
 
