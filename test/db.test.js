@@ -17,12 +17,10 @@ test('init test client', function (t) {
 });
 
 test('db.init', function (t) {
-  t.plan(2);
-
-  db.init(client, { rubbish: 'schema' }, {}, function (error) {
-    t.ok(error, 'error given when using invalid schema');
-  });
-
+  t.throws(
+    function () { db.init(client, { rubbish: 'schema' }); },
+    'error thrown when given when using invalid schema'
+  );
   db.init(client, schema)
     .then(function () { return client.query('SELECT * from user_data'); })
     .then(function (res) {
@@ -32,6 +30,7 @@ test('db.init', function (t) {
           .indexOf('dob') > -1
         , 'table created with a correct field'
       );
+      t.end();
     })
   ;
 });
