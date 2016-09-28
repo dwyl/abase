@@ -11,7 +11,8 @@ exports.init = function (port, next) {
   server.connection({ port: port });
 
   server.register([home, {
-    register: abase, options: { user_schema_path: path.join('..', 'example_config_2.json') }
+    register: abase,
+    options: { user_schema_path: path.join('..', 'example_config_2.json') } // eslint-disable-line
   }], function (err) {
     if (err) {
       return next(err);
