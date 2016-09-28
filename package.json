@@ -15,6 +15,7 @@
   },
   "homepage": "https://github.com/dwyl/abase#readme",
   "devDependencies": {
+    "codecov": "^1.0.1",
     "eslint": "^3.5.0",
     "hapi": "^15.1.0",
     "istanbul": "^0.4.5",
@@ -22,13 +23,15 @@
     "tape": "^4.6.0"
   },
   "scripts": {
+    "test": "node_modules/.bin/tape ./test/*.test.js",
     "runtest": "node_modules/.bin/tape ./test/*.test.js",
     "lint": "node_modules/.bin/eslint .",
     "lint:fix": "node_modules/.bin/eslint . --fix",
-    "test": "node_modules/.bin/istanbul cover node_modules/.bin/tape ./test/*.test.js"
+    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/tape ./test/*.test.js",
+    "codecov": "node_modules/.bin/codecov --token="${CODECOV_TOKEN}"
   },
   "pre-commit": [
     "lint",
-    "test"
+    "coverage"
   ]
 }
