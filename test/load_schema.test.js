@@ -32,7 +32,9 @@ tape('load the schema', function (t) {
     t.ok(!error, 'no errors');
     t.deepEqual(
       schema,
-      { email: { type: 'email' }, password: { type: 'password' } },
+      {
+        email: { type: 'email' }, password: { type: 'password' }
+      },
       'the schema is loaded properly'
     );
     t.end();

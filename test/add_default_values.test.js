@@ -8,9 +8,7 @@ tape('add default values to empty object', function (t) {
 });
 
 tape('add email to schema if not defined yet', function (t) {
-  var obj = {
-    password: { type: 'password' }
-  };
+  var obj = { password: { type: 'password' } };
 
   var anyChanges = addDefaultValues(obj);
   t.ok(anyChanges, 'Changes applied to the schema');
@@ -19,9 +17,7 @@ tape('add email to schema if not defined yet', function (t) {
 });
 
 tape('add password to schema if not defined yet', function (t) {
-  var obj = {
-    email: { type: 'email' }
-  };
+  var obj = { email: { type: 'email' } };
 
   var anyChanges = addDefaultValues(obj);
   t.ok(anyChanges, 'Changes applied to the schema');
