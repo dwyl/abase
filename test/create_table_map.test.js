@@ -8,7 +8,7 @@ var mapObj = mapper.mapObj;
 
 test('Boolean type', function (t) {
   t.equal(
-    mapObj['boolean']({}),
+    mapObj.boolean({}),
     'BOOLEAN',
     'boolean type: default'
   );
@@ -17,12 +17,12 @@ test('Boolean type', function (t) {
 
 test('Date type', function (t) {
   t.equal(
-    mapObj['date']({}),
+    mapObj.date({}),
     'DATE',
     'date type: default'
   );
   t.equal(
-    mapObj['date']({ timestamp: true }),
+    mapObj.date({ timestamp: true }),
     'TIMESTAMP',
     'date type: timestamp'
   );
@@ -31,12 +31,12 @@ test('Date type', function (t) {
 
 test('Number type', function (t) {
   t.equal(
-    mapObj['number']({}),
+    mapObj.number({}),
     'DOUBLE PRECISION',
     'number type: default'
   );
   t.equal(
-    mapObj['number']({ integer: true }),
+    mapObj.number({ integer: true }),
     'BIGINT',
     'number type: integer'
   );
@@ -45,12 +45,12 @@ test('Number type', function (t) {
 
 test('String type', function (t) {
   t.equal(
-    mapObj['string']({}),
+    mapObj.string({}),
     'VARCHAR(80)',
     'string type: default'
   );
   t.equal(
-    mapObj['string']({ max: 12 }),
+    mapObj.string({ max: 12 }),
     'VARCHAR(12)',
     'string type: specifies length'
   );

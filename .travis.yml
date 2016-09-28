@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "6"
+script: npm run coverage
+before_script:
+  - psql -c 'CREATE DATABASE travis_ci_test;' -U postgres
+after_script:
+  - npm run codecov
+services:
+  - postgresql

@@ -1,5 +1,7 @@
+'use strict';
+
 module.exports = {
-  table_name: 'user_data',
+  table_name: 'user_data', // eslint-disable-line
   fields: {
     email: {
       type: 'string',
@@ -10,8 +12,6 @@ module.exports = {
       min: 3,
       max: 20
     },
-    dob: {
-      type: 'date'
-    }
+    dob: { type: 'date' }
   }
 };

@@ -1,9 +1,15 @@
+'use strict';
+
 var test = require('tape');
 
 var validate = require('../lib/config_validator.js');
 var dbNameRegEx = validate.dbNameRegEx;
 
-function validator (config) { return function () { validate(config); } }
+function validator (config) {
+  return function () {
+    validate(config);
+  };
+}
 
 test('config validator', function (t) {
   t.throws(
@@ -11,28 +17,34 @@ test('config validator', function (t) {
     'error if no table_name property'
   );
   t.throws(
-    validator({ table_name: 'test' }),
+    validator({ table_name: 'test' }), // eslint-disable-line
     'error if no fields property'
   );
   t.throws(
-    validator({ table_name: '2test', fields: {} }),
-    'error if table name doesn\t pass db name regex'
-  );
-  t.throws(
-    validator({ table_name: '2test', fields: {} }),
+    validator({
+      table_name: '2test', fields: {} // eslint-disable-line
+    }),
     'error if table name doesn\t pass db name regex'
   );
   t.throws(
     validator({
-      table_name: 'test',
-      fields: {'2field': {type: 'string'}}
+      table_name: '2test', fields: {} // eslint-disable-line
+    }),
+    'error if table name doesn\t pass db name regex'
+  );
+  t.throws(
+    validator({
+      table_name: 'test', // eslint-disable-line
+      fields: { '2field': { type: 'string' } }
     }),
     'error if field name doesn\'t pass db name regex'
   );
   t.doesNotThrow(
     validator({
-      table_name: 'test',
-      fields: {'email': {type: 'string', unknown: 'allowed'}}
+      table_name: 'test', // eslint-disable-line
+      fields: { email: {
+        type: 'string', unknown: 'allowed'
+      } }
     }),
     'no error when extra options unknown'
   );

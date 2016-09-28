@@ -1,3 +1,5 @@
+'use strict';
+
 var test = require('tape');
 
 var client = require('./test_pg_client.js');
@@ -18,15 +20,15 @@ test('init test client', function (t) {
 
 test('db.init', function (t) {
   t.throws(
-    function () { db.init(client, { rubbish: 'schema' }); },
+    function () { db.init(client, { rubbish: 'schema' }) },
     'error thrown when given when using invalid schema'
   );
   db.init(client, schema)
-    .then(function () { return client.query('SELECT * from user_data'); })
+    .then(function () { return client.query('SELECT * from user_data') })
     .then(function (res) {
       t.ok(
         res.fields
-          .map(function (field) { return field.name; })
+          .map(function (field) { return field.name })
           .indexOf('dob') > -1
         , 'table created with a correct field'
       );
@@ -36,11 +38,10 @@ test('db.init', function (t) {
 });
 
 
-
 test('db.insert & default select w custom where', function (t) {
   db.insert(client, schema, { fields: testInsert })
     .then(function () {
-      return db.select(client, schema, { where: { dob: '2001-09-27'}});
+      return db.select(client, schema, { where: { dob: '2001-09-27' } });
     })
     .then(function (res) {
       t.equal(
@@ -74,22 +75,28 @@ test('db.update w where & custom select w default where', function (t) {
     where: { email: 'test@gmail.com' }
   }).then(function () {
     return db.select(client, schema, { select: ['email', 'username'] });
-  }).then(function (res) {
+  })
+  .then(function (res) {
     t.deepEqual(
       res.rows[0],
-      { email: 'test@gmail.com', username: 'bob' },
+      {
+        email: 'test@gmail.com', username: 'bob'
+      },
       'username updated'
     );
-  }).catch(t.fail);
+  })
+  .catch(t.fail);
 });
 
 test('db.delete w db.select', function (t) {
   t.plan(1);
-  db.delete(client, schema, { where: { username: 'bob' }})
-    .then(function () { return db.select(client, schema, {}); })
-    .then(function (res) { t.equal(res.rows.length, 0, 'nothing left in db'); })
+  db.delete(client, schema, { where: { username: 'bob' } })
+    .then(function () { return db.select(client, schema, {}) })
+    .then(function (res) { t.equal(res.rows.length, 0, 'nothing left in db') })
     .catch(t.fail)
   ;
 });
 
-test('close test client', function (t) { client.end(t.end); });
+test('close test client', function (t) {
+  client.end(t.end);
+});
