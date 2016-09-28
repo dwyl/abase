@@ -1,6 +1,6 @@
 {
-  "name": "abase2",
-  "version": "1.0.8",
+  "name": "abase",
+  "version": "1.0.0",
   "description": "A simple service to help people manage their personal data in your app.",
   "main": "lib/index.js",
   "repository": {
@@ -18,14 +18,15 @@
     "codecov": "^1.0.1",
     "eslint": "^3.5.0",
     "hapi": "^15.1.0",
+    "goodparts": "^1.0.4",
     "istanbul": "^0.4.5",
     "pre-commit": "^1.1.3",
     "tape": "^4.6.0"
   },
   "scripts": {
     "test": "node_modules/.bin/tape ./test/*.test.js",
-    "lint": "node_modules/.bin/eslint .",
-    "lint:fix": "node_modules/.bin/eslint . --fix",
+    "lint": "node_modules/.bin/goodparts .",
+    "lint:fix": "node_modules/.bin/goodparts . --fix",
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/tape ./test/*.test.js",
     "codecov": "node_modules/.bin/codecov --token=${CODECOV_TOKEN}"
   },
