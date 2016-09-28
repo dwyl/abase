@@ -1,9 +1,10 @@
 'use strict';
 
-var server = require('./server');
+var server = require('./server.js');
 var hoek = require('hoek');
+var port = process.env.PORT || 8000
 
-server.init(process.env.PORT || 8000, function (err) {
+server.init(port, function (err) {
   hoek.assert(!err, err);
-  server.log('The server is running on: ', server.info.uri);
+  console.log('The server is running on: http://localhost:' + port); // eslint-disable-line
 });

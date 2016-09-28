@@ -30,7 +30,8 @@
     "lint": "node_modules/.bin/goodparts .",
     "lint:fix": "node_modules/.bin/goodparts . --fix",
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/tape ./test/*.test.js",
-    "codecov": "node_modules/.bin/codecov --token=${CODECOV_TOKEN}"
+    "codecov": "node_modules/.bin/codecov --token=${CODECOV_TOKEN}",
+    "start": "node example/start.js"
   },
   "pre-commit": [
     "lint",
