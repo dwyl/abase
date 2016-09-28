@@ -36,9 +36,7 @@ tape('returns a html select tag', function (t) {
 
 tape('returns a input type string with date input', function (t) {
   var name = 'dob';
-  var input = {
-    type: 'date'
-  };
+  var input = { type: 'date' };
   var actual = fieldToHtml(name, input);
   var expected = '<label>dob: </label><input type="date" \>';
   t.equal(actual, expected);
