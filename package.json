@@ -28,7 +28,7 @@
     "lint": "node_modules/.bin/eslint .",
     "lint:fix": "node_modules/.bin/eslint . --fix",
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/tape ./test/*.test.js",
-    "codecov": "node_modules/.bin/codecov --token="{CODECOV_TOKEN}"
+    "codecov": "node_modules/.bin/codecov --token=${CODECOV_TOKEN}"
   },
   "pre-commit": [
     "lint",
