@@ -35,5 +35,11 @@
   "pre-commit": [
     "lint",
     "coverage"
-  ]
+  ],
+  "dependencies": {
+    "env2": "^2.1.1",
+    "hoek": "^4.1.0",
+    "joi": "^9.0.4",
+    "pg": "^6.1.0"
+  }
 }
