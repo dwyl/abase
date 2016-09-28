@@ -2,6 +2,7 @@
  * Test hooks for tape taken from:
  * https://github.com/substack/tape/issues/59#issuecomment-32808769
  */
+'use strict';
 
 exports.beforeEach = function (_test, handler) {
   return function tapish (name, listener) {

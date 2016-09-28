@@ -1,3 +1,5 @@
+'use strict';
+
 var fs = require('fs');
 var Hapi = require('hapi');
 var tape = require('tape');
