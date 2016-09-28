@@ -24,7 +24,6 @@
   },
   "scripts": {
     "test": "node_modules/.bin/tape ./test/*.test.js",
-    "runtest": "node_modules/.bin/tape ./test/*.test.js",
     "lint": "node_modules/.bin/eslint .",
     "lint:fix": "node_modules/.bin/eslint . --fix",
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/tape ./test/*.test.js",
