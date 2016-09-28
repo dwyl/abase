@@ -2,3 +2,5 @@ node_modules
 .DS_Store
 coverage
 npm-debug.log
+.eslintrc*
+config.env
