@@ -25,9 +25,9 @@
   },
   "scripts": {
     "test": "node_modules/.bin/tape ./test/*.test.js",
-    "lint": "node_modules/.bin/eslint .",
+    "lint": "node_modules/.bin/goodparts .",
     "lint:init": "ln -sf node_modules/goodparts/.eslintrc.js ./.eslintrc.js",
-    "lint:fix": "node_modules/.bin/eslint . --fix",
+    "lint:fix": "node_modules/.bin/goodparts . --fix",
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/tape ./test/*.test.js",
     "codecov": "node_modules/.bin/codecov --token=${CODECOV_TOKEN}",
     "postinstall": "npm run lint:init"
