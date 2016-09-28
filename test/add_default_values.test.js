@@ -9,7 +9,7 @@ tape('add default values to empty object', function (t) {
 
 tape('add email to schema if not defined yet', function (t) {
   var obj = {
-    password: {type: 'password'}
+    password: { type: 'password' }
   };
 
   var anyChanges = addDefaultValues(obj);
@@ -20,7 +20,7 @@ tape('add email to schema if not defined yet', function (t) {
 
 tape('add password to schema if not defined yet', function (t) {
   var obj = {
-    email: {type: 'email'}
+    email: { type: 'email' }
   };
 
   var anyChanges = addDefaultValues(obj);
@@ -31,8 +31,8 @@ tape('add password to schema if not defined yet', function (t) {
 
 tape('do not add default values if they are already defined', function (t) {
   var obj = {
-    email: {type: 'email'},
-    password: {type: 'password'}
+    email: { type: 'email' },
+    password: { type: 'password' }
   };
 
   var anyChanges = addDefaultValues(obj);
