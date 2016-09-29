@@ -75,10 +75,10 @@ test('db.insert x 2 same username error', function (t) {
       return db.insert(client, schema, { fields: testInsert });
     })
     .then(function () {
-      t.fails('shouldn\'t allow second insert if individual key given');
+      t.fails('shouldn\'t allow second insert if unique key given');
     })
     .catch(function () {
-      t.pass('shouldn\'t allow second insert if individual key given');
+      t.pass('shouldn\'t allow second insert if unique key given');
     })
   ;
 });

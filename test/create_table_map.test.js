@@ -77,7 +77,7 @@ test('Create Table Mapper Function w/ no options', function (t) {
 
 test('Create Table Mapper Function w/ unique option', function (t) {
   t.equal(
-    mapper('email', 'string', { individual: true }),
+    mapper('email', 'string', { unique: true }),
     'email VARCHAR(80) CONSTRAINT email_unique UNIQUE',
     'constraint added to column'
   );

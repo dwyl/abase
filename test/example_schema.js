@@ -11,7 +11,7 @@ module.exports = {
       type: 'string',
       min: 3,
       max: 20,
-      individual: true
+      unique: true
     },
     dob: { type: 'date' }
   }
