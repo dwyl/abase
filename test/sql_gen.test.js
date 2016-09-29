@@ -17,11 +17,12 @@ tape('::init - generate SQL to create a table if none exists', function (t) {
 
   t.equal(
     query,
-    'CREATE TABLE IF NOT EXISTS "user_data" ('
+    'CREATE TABLE IF NOT EXISTS "user_data" ( '
+    + 'id SERIAL, '
     + 'email VARCHAR(80), '
     + 'username VARCHAR(20), '
     + 'dob DATE'
-    + ')',
+    + ' )',
     'Create table query generation from config object'
   );
   t.end();
