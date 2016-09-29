@@ -45,11 +45,11 @@ test('needs to be hashed', function (t) {
     t.notEqual(res, testData, 'new object always returned');
     t.ok(
       compareSync(testData.password, res.password),
-      'field tagged password hashed ok'
+      'field tagged password hashed ok default salt number used'
     );
     t.ok(
       compareSync(testData.secretAnswer, res.secretAnswer),
-      'field tagged hash, hashed ok'
+      'other field tagged password hashed ok default salt number used'
     );
 
     t.end();
@@ -72,6 +72,19 @@ test('forcing a bcrypt error with invalid args (won\'t happen)', function (t) {
       },
       'original object not mutated'
     );
+
+    t.end();
+  });
+});
+
+test('custom salt number', function (t) {
+  var saltConfig = {
+    fields: { password: { password: true } },
+    salt_number: 5 // eslint-disable-line
+  };
+
+  hash(saltConfig, { password: 'hash me' }, function (err) {
+    t.notOk(err, 'when providing custom salt number');
 
     t.end();
   });
