@@ -39,10 +39,40 @@ test('config validator', function (t) {
       table_name: 'test', // eslint-disable-line
       fields: { email: {
         type: 'string',
-        unknown: 'allowed'
-      } }
+        unknown: 'field'
+      } },
+      unknown: 'config'
     }),
     'no error when extra options unknown'
+  );
+
+  t.end();
+});
+
+test('salt_number', function (t) {
+  t.doesNotThrow(
+    validator({
+      table_name: 'test', // eslint-disable-line
+      fields: { },
+      salt_number: 1 // eslint-disable-line
+    }),
+    '1 min number of rounds'
+  );
+  t.throws(
+    validator({
+      table_name: 'test', // eslint-disable-line
+      fields: { },
+      salt_number: 1.4 // eslint-disable-line
+    }),
+    'salt number must be integer'
+  );
+  t.throws(
+    validator({
+      table_name: 'test', // eslint-disable-line
+      fields: { },
+      salt_number: 0 // eslint-disable-line
+    }),
+    'salt number higher than 0'
   );
 
   t.end();
