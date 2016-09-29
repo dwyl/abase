@@ -27,11 +27,25 @@ test('::values w/ chosen order', function (t) {
 });
 
 test('::except', function (t) {
-  t.equal(
+  t.deepEqual(
     _.except(['b'], o),
     { a: 1 },
     'Only "a" prop left'
   );
+
+  t.end();
+});
+
+test('::shallowCopy', function (t) {
+  var n = {
+    a: o,
+    b: 'c'
+  };
+  var copy = _.shallowCopy(n);
+
+  t.deepEqual(copy, n, 'deep equal');
+  t.notEqual(copy, n, 'Not same object');
+  t.equal(copy.a, o, 'Only shallowly copied');
 
   t.end();
 });
