@@ -68,6 +68,21 @@ test('db.insert & default select w custom where', function (t) {
   ;
 });
 
+test('db.insert x 2 same username error', function (t) {
+  t.plan(1);
+  db.insert(client, schema, { fields: testInsert })
+    .then(function () {
+      return db.insert(client, schema, { fields: testInsert });
+    })
+    .then(function () {
+      t.fails('shouldn\'t allow second insert if unique key given');
+    })
+    .catch(function () {
+      t.pass('shouldn\'t allow second insert if unique key given');
+    })
+  ;
+});
+
 test('db.update w where & custom select w default where', function (t) {
   t.plan(1);
   db.update(client, schema, {
@@ -80,7 +95,8 @@ test('db.update w where & custom select w default where', function (t) {
     t.deepEqual(
       res.rows[0],
       {
-        email: 'test@gmail.com', username: 'bob'
+        email: 'test@gmail.com',
+        username: 'bob'
       },
       'username updated'
     );

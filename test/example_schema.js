@@ -10,7 +10,8 @@ module.exports = {
     username: {
       type: 'string',
       min: 3,
-      max: 20
+      max: 20,
+      unique: true
     },
     dob: { type: 'date' }
   }
