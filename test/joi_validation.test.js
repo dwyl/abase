@@ -81,6 +81,10 @@ test('schemaCreator invalid fields', function (t) {
     function () { schemaCreator(exampleSchema, ['email', 'not_configured']) },
     'if a field passed which is not in config object we throw for now'
   );
+  t.throws(
+    function () { schemaCreator(exampleSchema, ['email', { needs: 'name' }]) },
+    'if object given as field needs a name and options prop'
+  );
 
   t.end();
 });
