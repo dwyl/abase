@@ -6,7 +6,7 @@ var compareSync = require('bcrypt').compareSync;
 var hash = require('../lib/hash.js');
 
 var testConfig = { fields: {
-  secretAnswer: { hash: true },
+  secretAnswer: { password: true },
   password: { password: true },
   email: {}
 } };
