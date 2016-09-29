@@ -1,5 +1,30 @@
 {
-  "table": "user",
+  "table_name": "user_data",
+  "fields": {
+    "email": {
+      "type": "string",
+      "email": "true",
+      "required": true
+    },
+    "username": {
+      "type": "string",
+      "min": 3,
+      "max": 20,
+      "required": true
+    },
+    "password":{
+       "type":"string",
+       "password": true,
+       "require":true
+    },
+    "dob":{
+       "type":"date"
+    },
+    "gender": {
+        "type": "string",
+        "values": ["M", "F", "O", "NA"]
+    }
+  },
   "pages": {
     "register": {
       "path": "/signup",
