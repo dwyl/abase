@@ -1,1 +1,17 @@
-{"id":{"type":"hidden"},"email":{"type":"email"},"username":{"type":"string"},"password":{"type":"password"},"address":{"type":"password"},"isCool":{"type":"boolean"},"test":{"type":"string"},"age":{"type":"integer"},"streename":{"type":"string"}}
+{
+    "id": {
+        "type": "hidden"
+    },
+    "email": {
+        "type": "email"
+    },
+    "username": {
+        "type": "string"
+    },
+    "dob": {
+        "type": "string"
+    },
+    "password": {
+        "type": "password"
+    }
+}
