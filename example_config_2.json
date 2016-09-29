@@ -92,9 +92,6 @@
           "field": "email"
         },
         {
-          "field": "age"
-        },
-        {
           "field": "username"
         }
       ]
@@ -147,17 +144,10 @@
           }
         },
         {
-          "field": "age",
+          "field": "dob",
           "attributes": {
-            "name": "age",
-            "label": "Age: "
-          }
-        },
-        {
-          "field": "streename",
-          "attributes": {
-            "name": "streename",
-            "label": "Stree name: "
+            "name": "dob",
+            "label": "D.O.B: "
           }
         }
       ]
