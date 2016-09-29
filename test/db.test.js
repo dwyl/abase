@@ -1,6 +1,7 @@
 'use strict';
 
 var test = require('tape');
+var bcrypt = require('bcrypt');
 
 var client = require('./test_pg_client.js');
 var db = require('../lib/db.js');
@@ -9,7 +10,8 @@ var schema = require('./example_schema.js');
 var testInsert = {
   email: 'test@gmail.com',
   dob: '2001-09-27',
-  username: 'test'
+  username: 'test',
+  password: 'hash me'
 };
 
 test('init test client', function (t) {
@@ -39,33 +41,69 @@ test('db.init', function (t) {
 
 
 test('db.insert & default select w custom where', function (t) {
-  db.insert(client, schema, { fields: testInsert })
-    .then(function () {
-      return db.select(client, schema, { where: { dob: '2001-09-27' } });
-    })
-    .then(function (res) {
-      t.equal(
-        res.rows[0].email,
-        testInsert.email,
-        'email correct'
-      );
-      t.equal(
-        res.rows[0].username,
-        testInsert.username,
-        'username correct'
-      );
-      t.equal(
-        res.rows[0].dob.toLocaleDateString('GMT'),
-        new Date(testInsert.dob).toLocaleDateString('GMT'),
-        'get same date back, though now a date object'
-      );
-      t.end();
-    })
-    .catch(function (err) {
-      t.fail(err);
-      t.end();
-    })
-  ;
+  db.insert(client, schema, { fields: testInsert }, function () {
+    return db.select(client, schema, { where: { dob: '2001-09-27' } })
+      .then(function (res) {
+        t.equal(
+          res.rows[0].email,
+          testInsert.email,
+          'email correct'
+        );
+        t.equal(
+          res.rows[0].username,
+          testInsert.username,
+          'username correct'
+        );
+        t.ok(
+          bcrypt.compareSync(testInsert.password, res.rows[0].password),
+          'password hashed correctly'
+        );
+        t.equal(
+          res.rows[0].dob.toLocaleDateString('GMT'),
+          new Date(testInsert.dob).toLocaleDateString('GMT'),
+          'get same date back, though now a date object'
+        );
+        t.end();
+      })
+      .catch(function (err) {
+        t.fail(err);
+        t.end();
+      })
+    ;
+  });
+});
+
+test('db.insert & default select w custom where', function (t) {
+  db.insert(client, schema, { fields: testInsert }, function () {
+    return db.select(client, schema, { where: { dob: '2001-09-27' } })
+      .then(function (res) {
+        t.equal(
+          res.rows[0].email,
+          testInsert.email,
+          'email correct'
+        );
+        t.equal(
+          res.rows[0].username,
+          testInsert.username,
+          'username correct'
+        );
+        t.ok(
+          bcrypt.compareSync(testInsert.password, res.rows[0].password),
+          'password hashed correctly'
+        );
+        t.equal(
+          res.rows[0].dob.toLocaleDateString('GMT'),
+          new Date(testInsert.dob).toLocaleDateString('GMT'),
+          'get same date back, though now a date object'
+        );
+        t.end();
+      })
+      .catch(function (err) {
+        t.fail(err);
+        t.end();
+      })
+    ;
+  });
 });
 
 test('db.update w where & custom select w default where', function (t) {

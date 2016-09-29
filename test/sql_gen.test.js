@@ -20,9 +20,10 @@ tape('::init - generate SQL to create a table if none exists', function (t) {
     'CREATE TABLE IF NOT EXISTS "user_data" ('
     + 'email VARCHAR(80), '
     + 'username VARCHAR(20), '
+    + 'password VARCHAR(60), '
     + 'dob DATE'
     + ')',
-    'Create table query generation from config object'
+    'Create table query generation from config object, pw length overwritten'
   );
   t.end();
 });
