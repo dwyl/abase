@@ -15,7 +15,8 @@
     "password":{
        "type":"string",
        "password": true,
-       "require":true
+       "require":true,
+       "min": 8
     },
     "dob":{
        "type":"date"
