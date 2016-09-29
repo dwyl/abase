@@ -17,7 +17,6 @@
   "devDependencies": {
     "codecov": "^1.0.1",
     "eslint": "^3.5.0",
-    "hapi": "^15.0.3",
     "goodparts": "^1.0.4",
     "istanbul": "^0.4.5",
     "hoek": "^4.1.0",
@@ -39,6 +38,7 @@
   "dependencies": {
     "bcrypt": "^0.8.7",
     "env2": "^2.1.1",
+    "hapi": "^15.1.0",
     "hoek": "^4.1.0",
     "inert": "^4.0.2",
     "joi": "^9.0.4",
