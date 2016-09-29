@@ -5,7 +5,7 @@ module.exports = {
   fields: {
     email: {
       type: 'string',
-      email: true
+      email: 'true'
     },
     username: {
       type: 'string',

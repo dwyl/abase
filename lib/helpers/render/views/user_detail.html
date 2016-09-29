@@ -1,0 +1,12 @@
+<link rel="stylesheet" type="text/css" href="/resources/style.css">
+<h1>User Details</h1>
+
+<ul>
+  {{#each userDetails}}
+    <li>{{@key}}: {{this}}</li>
+  {{/each}}
+</ul>
+
+<form action="/user/edit/{{userDetails.id}}" method="get">
+  <button type="submit">Edit</button>
+</form>

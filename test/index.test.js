@@ -67,29 +67,3 @@ tape('Load abase plugin properly', function (t) {
     t.end();
   });
 });
-
-tape('Load properly abase plugin and add default values', function (t) {
-  var opts = getOpts(PATH_SCHEMA);
-  var schemaBefore, schemaAfter, expected;
-
-  schemaBefore = JSON.parse(fs.readFileSync(opts.user_schema_path, 'utf8'));
-  t.deepEqual(schemaBefore, {}, 'The schema is empty before abase loading');
-
-  server.register({
-    register: abase, options: opts
-  }, function (err) {
-    t.ok(!err, 'No error thrown');
-
-    schemaAfter = JSON.parse(fs.readFileSync(opts.user_schema_path, 'utf8'));
-    expected = {
-      email: { type: 'email' },
-      password: { type: 'password' }
-    };
-    t.deepEqual(
-      schemaAfter,
-      expected,
-      'The schema contains the default values after abase loaded'
-    );
-    t.end();
-  });
-});

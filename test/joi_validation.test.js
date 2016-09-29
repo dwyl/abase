@@ -39,7 +39,7 @@ test('schemaCreator with custom options', function (t) {
   var schema = schemaCreator(exampleSchema, [
     {
       name: 'email',
-      options: { required: true }
+      options: { required: 'true' }
     },
     {
       name: 'dob',
@@ -77,9 +77,9 @@ test('schemaCreator with custom options', function (t) {
 });
 
 test('schemaCreator invalid fields', function (t) {
-  t.throws(
+  t.doesNotThrow(
     function () { schemaCreator(exampleSchema, ['email', 'not_configured']) },
-    'if a field passed which is not in config object we throw for now'
+    'if a field passed which is not in config object we do not throw'
   );
   t.throws(
     function () { schemaCreator(exampleSchema, ['email', { needs: 'name' }]) },

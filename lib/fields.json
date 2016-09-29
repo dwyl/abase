@@ -1,0 +1,20 @@
+{
+  "id": {
+    "type": "hidden"
+  },
+  "email": {
+    "type": "email"
+  },
+  "username": {
+    "type": "string"
+  },
+  "dob": {
+    "type": "string"
+  },
+  "password": {
+    "type": "password"
+  },
+  "gender": {
+    "type": "string"
+  }
+}

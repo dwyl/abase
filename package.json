@@ -17,9 +17,9 @@
   "devDependencies": {
     "codecov": "^1.0.1",
     "eslint": "^3.5.0",
-    "hapi": "^15.1.0",
     "goodparts": "^1.0.4",
     "istanbul": "^0.4.5",
+    "hoek": "^4.1.0",
     "pre-commit": "^1.1.3",
     "tape": "^4.6.0"
   },
@@ -28,15 +28,19 @@
     "lint": "node_modules/.bin/goodparts .",
     "lint:fix": "node_modules/.bin/goodparts . --fix",
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/tape ./test/*.test.js",
-    "codecov": "node_modules/.bin/codecov --token=${CODECOV_TOKEN}"
+    "codecov": "node_modules/.bin/codecov --token=${CODECOV_TOKEN}",
+    "start": "node example/start.js"
   },
   "pre-commit": [
     "lint",
     "coverage"
   ],
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "env2": "^2.1.1",
+    "hapi": "^15.1.0",
     "hoek": "^4.1.0",
+    "inert": "^4.0.2",
     "joi": "^9.0.4",
     "pg": "^6.1.0"
   }
