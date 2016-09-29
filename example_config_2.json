@@ -13,17 +13,17 @@
       "required": true
     },
     "password":{
-       "type":"string",
-       "password": true,
-       "require":true,
-       "min": 8
+      "type":"string",
+      "password": true,
+      "required":true,
+      "min": 8
     },
     "dob":{
        "type":"date"
     },
     "gender": {
-        "type": "string",
-        "values": ["M", "F", "O", "NA"]
+      "type": "string",
+      "values": ["M", "F", "O", "NA"]
     }
   },
   "pages": {
