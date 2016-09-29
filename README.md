@@ -129,3 +129,10 @@ At the moment you have to add manually the fields you want displayed on the page
 
 
 
+## Running the Project
+
+For the tests to work you will need to have the url to a test database in a `config.env` file as followed:
+```
+TEST_DATABASE_URL=psql://localhost:5432/testdb
+```
+**Note** before tests are run the tables may be removed from the database so don't keep your family photos there.
