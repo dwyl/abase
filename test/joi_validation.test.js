@@ -39,7 +39,7 @@ test('schemaCreator with custom options', function (t) {
   var schema = schemaCreator(exampleSchema, [
     {
       name: 'email',
-      options: { required: 'true'}
+      options: { required: 'true' }
     },
     {
       name: 'dob',
