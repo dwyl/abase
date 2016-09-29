@@ -22,13 +22,8 @@ test('config validator', function (t) {
   );
   t.throws(
     validator({
-      table_name: '2test', fields: {} // eslint-disable-line
-    }),
-    'error if table name doesn\t pass db name regex'
-  );
-  t.throws(
-    validator({
-      table_name: '2test', fields: {} // eslint-disable-line
+      table_name: '2test', // eslint-disable-line
+      fields: {}
     }),
     'error if table name doesn\t pass db name regex'
   );
@@ -43,7 +38,8 @@ test('config validator', function (t) {
     validator({
       table_name: 'test', // eslint-disable-line
       fields: { email: {
-        type: 'string', unknown: 'allowed'
+        type: 'string',
+        unknown: 'allowed'
       } }
     }),
     'no error when extra options unknown'
