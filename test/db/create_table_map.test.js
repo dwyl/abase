@@ -2,7 +2,7 @@
 
 var test = require('tape');
 
-var mapper = require('../lib/create_table_map.js');
+var mapper = require('../../lib/db/create_table_map.js');
 
 var mapObj = mapper.mapObj;
 
