@@ -3,8 +3,8 @@
 var test = require('tape');
 var Joi = require('joi');
 
-var schemaCreator = require('../lib/joi_validation.js');
-var exampleSchema = require('./example_schema.js');
+var schemaCreator = require('../../lib/validate/joi_validation.js');
+var exampleSchema = require('../example_schema.js');
 
 var joiAssert = function (object, schema) {
   return function () {
