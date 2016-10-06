@@ -2,7 +2,7 @@
 
 var test = require('tape');
 
-var validate = require('../lib/config_validator.js');
+var validate = require('../../lib/db/config_validator.js');
 var dbNameRegEx = validate.dbNameRegEx;
 
 function validator (config) {

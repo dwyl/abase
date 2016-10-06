@@ -2,8 +2,8 @@
 
 var tape = require('tape');
 
-var sqlGen = require('../lib/sql_gen.js');
-var schema = require('./example_schema.js');
+var sqlGen = require('../../lib/db/sql_gen.js');
+var schema = require('../example_schema.js');
 
 tape('::init should throw on empty or invalid input', function (t) {
   t.throws(function () {
@@ -152,6 +152,24 @@ tape('::delete should generate SQL to delete a row from a table', function (t) {
   t.deepEqual(
     query[1],
     ['bob'],
+    'Generate values for parameterised query'
+  );
+  t.end();
+});
+
+tape('::delete should gen SQL to delete row w/ multiple where', function (t) {
+  var query = sqlGen.delete(schema.table_name, { where: {
+    username: 'bob', dob: '20/04/1988'
+  } });
+
+  t.equal(
+    query[0],
+    'DELETE FROM "user_data" WHERE username=$1 AND dob=$2',
+    'Generate parameterised query'
+  );
+  t.deepEqual(
+    query[1],
+    ['bob', '20/04/1988'],
     'Generate values for parameterised query'
   );
   t.end();
