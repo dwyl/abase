@@ -35,6 +35,7 @@
     "coverage"
   ],
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "env2": "^2.1.1",
     "hoek": "^4.1.0",
     "joi": "^9.0.4",
