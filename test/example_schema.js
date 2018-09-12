@@ -13,6 +13,11 @@ module.exports = {
       max: 20,
       unique: true
     },
+    password: {
+      type: 'string',
+      min: 5,
+      max: 20
+    },
     dob: { type: 'date' }
   }
 };
